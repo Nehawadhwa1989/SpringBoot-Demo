@@ -1,0 +1,11 @@
+-------------------------------------------------------------------------------
+Test set: hello.HelloControllerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 4.575 s <<< FAILURE! - in hello.HelloControllerTest
+getHello(hello.HelloControllerTest)  Time elapsed: 0.085 s  <<< FAILURE!
+java.lang.AssertionError: 
+Response content
+Expected: "Greetings from Spring Boot!"
+     but: was "Greetings from Spring Boot!!"
+	at hello.HelloControllerTest.getHello(HelloControllerTest.java:29)
+
