@@ -35,7 +35,23 @@ node {
 	stage ('Artifactory Build Publish') {
      server.publishBuildInfo buildInfo
     }
-	 
+	stage('Docker Image Build'){
+	   sh "sudo docker build -t chiragmakkar13/springboot:Dockerfile ."
+          }
+
+    stage('Push Image') {
+            withCredentials([usernamePassword(
+            credentialsId: "dockerhub",
+            usernameVariable: "USER",
+            passwordVariable: "PASS"
+        )]) {
+            sh "sudo docker login -u $USER -p $PASS"
+        }
+
+        sh "sudo docker tag chiragmakkar13/springboot:latest chiragmakkar13/springboot:$BUILD_NUMBER"
+        sh "sudo docker push chiragmakkar13/springboot:latest"
+        sh "sudo docker push chiragmakkar13/springboot:$BUILD_NUMBER"
+    } 
 	
 	
 	
