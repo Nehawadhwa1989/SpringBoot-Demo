@@ -1,4 +1,4 @@
-FROM java:8
+FROM gcr.io/distroless/java
 WORKDIR /
 ADD target/gs-spring-boot-0.1.0.jar //
 EXPOSE 8080
